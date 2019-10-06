@@ -1,14 +1,8 @@
 package org.qbit.messanger.userservice.dto.converter;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.qbit.messanger.userservice.UserServiceApplicationTests;
 import org.qbit.messanger.userservice.dto.UserDto;
 import org.qbit.messanger.userservice.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

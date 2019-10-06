@@ -5,7 +5,7 @@ import org.qbit.messanger.userservice.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserToDtoConverter implements Converter<User, UserDto>{
+public class UserToDtoConverter implements Converter<User, UserDto> {
 
     @Override
     public UserDto convert(User source) {
