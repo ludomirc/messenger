@@ -15,6 +15,8 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.qbit.messanger.userservice.fixture.DataSupplier.getTestUser;
+import static org.qbit.messanger.userservice.fixture.DataSupplier.testUserId;
 
 class UserToDtoConverterTest {
 
@@ -22,8 +24,7 @@ class UserToDtoConverterTest {
 
     @Test
     void whenIsGivenUserModel_thenConvertTheModelTOUserDto() {
-
-        User expectedUser = getUser();
+        User expectedUser = getTestUser(testUserId);
         UserDto actual =  userToDtoConverter.convert(expectedUser);
 
         assertThat(actual.getUserId(),is(equalTo(expectedUser.getId())));
@@ -31,8 +32,8 @@ class UserToDtoConverterTest {
 
     @Test
     void whenIsGivenNullUser_thenThrowNullPointerException() {
-
         User expectedUser = null;
+
         assertThrows(NullPointerException.class, () -> {
             userToDtoConverter.convert(expectedUser);
         });
@@ -40,15 +41,8 @@ class UserToDtoConverterTest {
 
     @Test
     void whenIuserHaveNullId_thenGetDtoWithUserNullId() {
-
         UserDto actualUser = userToDtoConverter.convert(new User());
 
         assertThat(actualUser.getUserId(),is(nullValue()));
-    }
-
-
-    private User getUser() {
-        String expectedUserId = "testUser1";
-        return new User(expectedUserId);
     }
 }
