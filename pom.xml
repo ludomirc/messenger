@@ -8,11 +8,13 @@
     <artifactId>messanger</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
-        <module>parent</module>
-        <module>common</module>
-        <module>user-service</module>
-        <module>posts-service</module>
+        <module>messenger-parent</module>
+        <module>messenger-common</module>
+        <module>messenger-user</module>
+        <module>messenger-follower</module>
+        <module>messenger-post</module>
     </modules>
 
 </project>
