@@ -59,7 +59,7 @@ class UserServiceImpTest {
     }
 
     @Test
-    void whenClientAskaboutUsers_thenReturnUsers() {
+    void whenClientQyeryAllUsers_thenReturnAllUsers() {
 
         List<User> expectedUsers = getUsers("t1","t2","t3");
 
