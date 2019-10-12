@@ -8,11 +8,10 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "post")
 @Getter
 @Setter
-@ToString
+@Entity
+@Table(name = "post")
 public class Post extends AbstractPersistable<Long> {
 
     @Size(min = 1, max = 50)

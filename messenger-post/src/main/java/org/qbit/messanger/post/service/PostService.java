@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface PostService {
 
-   List<PostDto> findPostsByUserId(String userId);
+   List<PostDto> findByUserId(String userId);
 
-   void crate(PostDto postDto);
+   PostDto crate(PostDto postDto);
 
 }

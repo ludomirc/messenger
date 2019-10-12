@@ -9,7 +9,5 @@ import java.util.stream.Stream;
 @Repository
 public interface GenericPostRepository extends CrudRepository<Post,Long> {
 
-    Stream<Post> findByUserIdOrderByIdDesc(String userId);
-
     Stream<Post> findByUserId(String userId);
 }

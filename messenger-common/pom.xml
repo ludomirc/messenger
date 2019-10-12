@@ -11,6 +11,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <packaging>jar</packaging>
+
+    <groupId>org.qbit.messanger</groupId>
     <artifactId>messenger-common</artifactId>
     <version>1.0-SNAPSHOT</version>
 

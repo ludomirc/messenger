@@ -24,6 +24,7 @@
         <lobmock.veriosn>1.18.10</lobmock.veriosn>
         <sprng.boot.version>2.1.9.RELEASE</sprng.boot.version>
         <h2.version>1.4.199</h2.version>
+        <messanger.common.version>1.0-SNAPSHOT</messanger.common.version>
     </properties>
 
     <dependencyManagement>
@@ -118,6 +119,13 @@
                 <scope>test</scope>
             </dependency>
 
+
+            <!-- local dependencies -->
+            <dependency>
+                <groupId>org.qbit.messanger</groupId>
+                <artifactId>messenger-common</artifactId>
+                <version>${messanger.common.version}</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
