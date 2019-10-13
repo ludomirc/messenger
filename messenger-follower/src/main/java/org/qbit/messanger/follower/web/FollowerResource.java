@@ -25,7 +25,7 @@ public class FollowerResource {
     FollowerService followerService;
 
     @PostMapping()
-    ResponseEntity<?> addFollowed(@Valid FollowerDto follower) {
+    ResponseEntity<?> addFollowed(@Valid @RequestBody FollowerDto follower) {
 
         String ownerId = follower.getOwnerId();
         Optional<UserDto> owner = userService.getUser(new UserDto(ownerId));
