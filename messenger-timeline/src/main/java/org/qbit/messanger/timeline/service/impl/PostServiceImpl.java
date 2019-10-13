@@ -1,7 +1,8 @@
 package org.qbit.messanger.timeline.service.impl;
 
 import org.qbit.messanger.timeline.dto.FollowerDto;
-import org.qbit.messanger.timeline.service.FollowerService;
+import org.qbit.messanger.timeline.dto.PostDto;
+import org.qbit.messanger.timeline.service.PostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,30 +18,30 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @Service
-public class FollowerServiceImpl implements FollowerService {
+public class PostServiceImpl implements PostService {
 
-    private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(PostServiceImpl.class);
 
-    @Value("${messages.follower.service.url}")
-    private String followerServiceUrl;
+    @Value("${messages.post.service.url}")
+    private String postServiceUrl;
 
-    private static final String GET_FOLLOWER_PATH = "follower/{ownerId}";
+    private static final String GET_POST_PATH = "post/{userId}";
 
     @Autowired
     RestTemplate restTemplate;
 
+
     @Override
-    public List<FollowerDto> getFollowers(String ownerId) {
+    public List<PostDto> getPosts(String userId) {
+
         UriComponents uriComponents = UriComponentsBuilder
-                .fromUriString(followerServiceUrl)
-                .pathSegment(GET_FOLLOWER_PATH)
-                .buildAndExpand(ownerId);
+                .fromUriString(postServiceUrl)
+                .pathSegment(GET_POST_PATH)
+                .buildAndExpand(userId);
 
-        logger.info(uriComponents.toUriString());
-
-        ResponseEntity<List<FollowerDto>> response =
+        ResponseEntity<List<PostDto>> response =
                 restTemplate.exchange(uriComponents.toUriString(),
-                        HttpMethod.GET, null, new ParameterizedTypeReference<List<FollowerDto>>() {
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<PostDto>>() {
                         });
 
         return  response.getBody();
