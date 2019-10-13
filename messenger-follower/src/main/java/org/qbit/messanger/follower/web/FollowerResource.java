@@ -30,14 +30,16 @@ public class FollowerResource {
         String ownerId = follower.getOwnerId();
         Optional<UserDto> owner = userService.getUser(new UserDto(ownerId));
         if (owner.isEmpty()) {
-            return new ResponseEntity(String.format("not found ownerId: %s",ownerId), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(String.format("not found ownerId: %s", ownerId), HttpStatus.NOT_FOUND);
         }
 
         String observedUserId = follower.getObservedUserId();
-        Optional<UserDto>  observedUser = userService.getUser(new UserDto(observedUserId));
+        Optional<UserDto> observedUser = userService.getUser(new UserDto(observedUserId));
         if (observedUser.isEmpty()) {
-            return new ResponseEntity(String.format("not found observedUserId: %s ",observedUserId), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(String.format("not found observedUserId: %s ", observedUserId), HttpStatus.NOT_FOUND);
         }
+
+        followerService.addFollower(follower);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -47,14 +49,14 @@ public class FollowerResource {
 
         Optional<UserDto> user = userService.getUser(new UserDto(ownerId));
         if (user.isEmpty()) {
-            return new ResponseEntity(String.format("Owner %s not present",ownerId), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(String.format("Owner %s not present", ownerId), HttpStatus.NOT_FOUND);
         }
 
         String owner = user.get().getUserId();
         List<FollowerDto> followerDtos = followerService.getFollowers(owner);
 
         if (followerDtos.isEmpty()) {
-            return new ResponseEntity(String.format("%s does not follow any publisher",owner), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(String.format("%s does not follow any publisher", owner), HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity(followerDtos, HttpStatus.OK);
