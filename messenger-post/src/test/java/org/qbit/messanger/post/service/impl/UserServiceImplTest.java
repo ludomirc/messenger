@@ -18,10 +18,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.when;
+import static org.qbit.messanger.post.fixture.DataSupplier.*;
 import static org.qbit.messanger.post.fixture.DataSupplier.TEST_USER_ID1;
 import static org.qbit.messanger.post.fixture.DataSupplier.TEST_USER_SERVICE_URI;
-import static org.qbit.messanger.post.service.impl.UserServiceImpl.ADD_USER_PATH;
-import static org.qbit.messanger.post.service.impl.UserServiceImpl.GET_USER_PATH;
+
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {

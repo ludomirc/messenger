@@ -6,35 +6,27 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="messenger-user" />
-        <module name="messenger-post" />
         <module name="messenger-follower" />
+        <module name="messenger-post" />
+        <module name="messenger-user" />
         <module name="messenger-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="messanger" target="1.5" />
-      <module name="messanger-folower" target="1.5" />
-      <module name="messanger-post" target="11" />
-      <module name="messanger-user" target="11" />
       <module name="messenger-common" target="11" />
       <module name="messenger-follower" target="11" />
-      <module name="messenger-folower" target="1.5" />
       <module name="messenger-parent" target="11" />
       <module name="messenger-post" target="11" />
       <module name="messenger-user" target="11" />
-      <module name="user-service" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="messanger-post" options="-parameters" />
-      <module name="messanger-user" options="-parameters" />
       <module name="messenger-common" options="-parameters" />
       <module name="messenger-follower" options="-parameters" />
       <module name="messenger-post" options="-parameters" />
       <module name="messenger-user" options="-parameters" />
-      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>

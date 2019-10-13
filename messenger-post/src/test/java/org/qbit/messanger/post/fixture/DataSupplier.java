@@ -18,8 +18,8 @@ public final class DataSupplier {
 
     public static final String TEST_USER_SERVICE_URI = "http://test_url";
 
-    private static final String GET_USER_PATH = "/users/{userId}";
-    private static final String ADD_USER_PATH = "/users";
+    public static final String GET_USER_PATH = "/users/{userId}";
+    public static final String ADD_USER_PATH = "/users";
 
     public static final String TEST_BODY1 = "test_body1";
 
