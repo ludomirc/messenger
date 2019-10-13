@@ -1,5 +1,6 @@
 package org.qbit.messanger.post.repository;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.qbit.messanger.post.fixture.DataSupplier;
@@ -17,6 +18,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.qbit.messanger.post.fixture.DataSupplier.*;
 
+@Disabled
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 class GenericPostRepositoryIntegrationTest {

@@ -16,14 +16,13 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Value("${messages.user.service.url}")
     private String userServiceUrl;
 
-    protected static final String GET_USER_PATH = "/users/{userId}";
-    protected static final String ADD_USER_PATH = "/users";
-
+    private static final String GET_USER_PATH = "/users/{userId}";
+    private static final String ADD_USER_PATH = "/users";
 
     @Autowired
     RestTemplate userServiceRestTemplate;
@@ -35,6 +34,8 @@ public class UserServiceImpl implements UserService {
                 .fromUriString(userServiceUrl)
                 .pathSegment(GET_USER_PATH)
                 .buildAndExpand(user.getUserId());
+
+        logger.info(uriComponents.toUriString());
 
         try {
             return Optional
@@ -53,6 +54,8 @@ public class UserServiceImpl implements UserService {
                 .fromUriString(userServiceUrl)
                 .pathSegment(ADD_USER_PATH)
                 .build();
+
+        logger.info(uriComponents.toUriString());
 
         try {
             return Optional

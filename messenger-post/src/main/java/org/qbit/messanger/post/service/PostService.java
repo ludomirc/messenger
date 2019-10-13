@@ -8,6 +8,6 @@ public interface PostService {
 
    List<PostDto> findByUserId(String userId);
 
-   PostDto crate(PostDto postDto);
+   PostDto save(PostDto postDto);
 
 }

@@ -37,7 +37,7 @@ public class PostResource {
                 .orElse(userService.addUser(new UserDto(post.getUserId())).get());
 
         post.setUserId(userDto.getUserId());
-        postService.crate(post);
+        postService.save(post);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

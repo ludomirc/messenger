@@ -26,7 +26,7 @@ import org.qbit.messanger.post.repository.GenericPostRepository;
 import static org.qbit.messanger.post.fixture.DataSupplier.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PostServiceImplTest {
+class PostServiceImplTest {
 
     @Mock
     private GenericPostRepository postRepository;
@@ -41,7 +41,7 @@ public class PostServiceImplTest {
     private PostServiceImpl postServiceImpl = new PostServiceImpl();
 
     @Test
-    public void whenServiceIsQueryByExistingUser_thenGetTheUserPosts() {
+    void whenServiceIsQueryByExistingUser_thenGetTheUserPosts() {
 
         String expectedUserId = TEST_USER_ID1;
         Post expectedPost = getTestPost1();
@@ -56,11 +56,11 @@ public class PostServiceImplTest {
     }
 
     @Test
-    public void crate() {
+    void crate() {
 
-        Post  expectedPost = getTestPost1();
+        Post expectedPost = getTestPost1();
         when(postRepository.save(expectedPost)).thenReturn(expectedPost);
-        PostDto actualPost = postServiceImpl.crate(postPostDtoConverter.convert(expectedPost));
+        PostDto actualPost = postServiceImpl.save(postPostDtoConverter.convert(expectedPost));
 
         assertThat(actualPost.getId(), is(equalTo(expectedPost.getId())));
         assertThat(actualPost.getBody(), is(equalTo(expectedPost.getBody())));

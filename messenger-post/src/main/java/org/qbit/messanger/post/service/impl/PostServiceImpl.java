@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     @Transactional(readOnly = false)
-    public PostDto crate(PostDto postDto) {
+    public PostDto save(PostDto postDto) {
 
         return postPostDtoConverter
                 .convert(postRepository.save(postDtoPostConverter.convert(postDto)));

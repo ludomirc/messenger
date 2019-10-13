@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class UserDto implements Serializable {
 
