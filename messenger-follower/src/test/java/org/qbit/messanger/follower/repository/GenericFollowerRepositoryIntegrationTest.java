@@ -31,7 +31,7 @@ class GenericFollowerRepositoryIntegrationTest {
 
     @Test
     void whenIsGivenFlower_thenSaveTheFlower() {
-        Follower expected = getFollower(TEST_USER_ID1, TEST_USER_ID2);
+        Follower expected = getTestFollower(TEST_USER_ID1, TEST_USER_ID2);
         Follower actual = followerRepository.save(expected);
         entityManager.getEntityManager().flush();
 
@@ -40,8 +40,8 @@ class GenericFollowerRepositoryIntegrationTest {
 
     @Test
     void whenIsGivenDuplicateFollower_thenThrowException() {
-        Follower expectedFlower = getFollower(TEST_USER_ID1, TEST_USER_ID2);
-        Follower duplicateExpectedFollower = getFollower(TEST_USER_ID1, TEST_USER_ID2);
+        Follower expectedFlower = getTestFollower(TEST_USER_ID1, TEST_USER_ID2);
+        Follower duplicateExpectedFollower = getTestFollower(TEST_USER_ID1, TEST_USER_ID2);
 
         followerRepository.save(expectedFlower);
 
@@ -75,8 +75,8 @@ class GenericFollowerRepositoryIntegrationTest {
 
     private List<Follower> getFollowers() {
         return Arrays.asList(
-                getFollower(TEST_USER_ID1, TEST_USER_ID2)
-                , getFollower(TEST_USER_ID1, TEST_USER_ID3)
+                getTestFollower(TEST_USER_ID1, TEST_USER_ID2)
+                , getTestFollower(TEST_USER_ID1, TEST_USER_ID3)
         );
     }
 }
