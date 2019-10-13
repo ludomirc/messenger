@@ -15,6 +15,7 @@
         <module>messenger-user</module>
         <module>messenger-follower</module>
         <module>messenger-post</module>
+        <module>messenger-timeline</module>
     </modules>
 
 </project>
