@@ -1,47 +1,48 @@
 package org.qbit.messanger.userservice.web;
 
+import org.qbit.messanger.Converter;
 import org.qbit.messanger.userservice.dto.UserDto;
-import org.qbit.messanger.userservice.dto.converter.Converter;
 import org.qbit.messanger.userservice.model.User;
 import org.qbit.messanger.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/v001")
+@RequestMapping("/v001/users")
 public class UserResource {
+
+
+    public static final String USER_ID_PATH_ELEMENT = "/{userId}";
 
     @Autowired
     private UserService userService;
 
     @Autowired
-    private Converter<User, UserDto> userDtoConverter;
+    Converter<User, UserDto> userUserDtoConverter;
 
-    @GetMapping("/users/{userId}")
+    @GetMapping(USER_ID_PATH_ELEMENT)
     UserDto getUser(@Size(min = 1, max = 50) @PathVariable String userId) {
-        return userDtoConverter.convert(userService.getUser(userId)
-                .orElseThrow(RuntimeException::new)
-        );
+
+        return userService.getUser(userId)
+                .orElseThrow(() -> new RuntimeException("user not found"));
     }
 
-    @GetMapping("/users")
+    @GetMapping()
     List<UserDto> getUsers() {
-        return userService.getUsers().stream()
-                .map(userDtoConverter::convert)
-                .collect(Collectors.toList());
+        return userService.getUsers();
     }
 
-    @PostMapping("/users/{userId}")
-    UserDto addUser(@Size(min = 1, max = 50) @PathVariable String userId) {
-        return userDtoConverter.convert(userService.addUser(new User(userId)));
+    @PostMapping()
+    UserDto addUser(@Valid @RequestBody UserDto user) {
+        return userService.addUser(user);
     }
 
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping(USER_ID_PATH_ELEMENT)
     void deleteUser(@Size(min = 1, max = 50) @PathVariable String userId) {
-            userService.deleteUser(userId);
+        userService.deleteUser(userId);
     }
 }

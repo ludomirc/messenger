@@ -6,9 +6,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.qbit.messanger.userservice.converter.UserUserDtoConverter;
 import org.qbit.messanger.userservice.dto.UserDto;
-import org.qbit.messanger.userservice.dto.converter.UserToDtoConverter;
-import org.qbit.messanger.userservice.model.User;
 import org.qbit.messanger.userservice.service.UserService;
 
 import java.util.List;
@@ -28,34 +27,34 @@ class UserResourceTest {
     UserService userService;
 
     @Spy
-    UserToDtoConverter converter;
+    UserUserDtoConverter converter;
 
     @InjectMocks
     UserResource restResource;
 
     @Test
     void whenIsGivenUserId_thenGetTheUser() {
-        Optional<User> expectedUser = Optional.of(getTestUser(testUserId));
-        when(userService.getUser(expectedUser.get().getId())).thenReturn(expectedUser);
+        Optional<UserDto> expectedUser = Optional.of(new UserDto(testUserId));
+        when(userService.getUser(expectedUser.get().getUserId())).thenReturn(expectedUser);
 
         UserDto actualUsr = restResource.getUser(testUserId);
 
-        assertThat(actualUsr.getUserId(), is(equalTo(expectedUser.get().getId())));
+        assertThat(actualUsr.getUserId(), is(equalTo(expectedUser.get().getUserId())));
     }
 
     @Test
     void whenClientAdUserById_thenAddTheUser() {
-        User expectedUser = getTestUser(testUserId);
+        UserDto expectedUser = new UserDto(testUserId);
         when(userService.addUser(expectedUser)).thenReturn(expectedUser);
 
-        UserDto actualUsr = restResource.addUser(testUserId);
+        UserDto actualUsr = restResource.addUser(expectedUser);
 
-        assertThat(actualUsr.getUserId(), is(equalTo(expectedUser.getId())));
+        assertThat(actualUsr.getUserId(), is(equalTo(expectedUser.getUserId())));
     }
 
     @Test
     void whenClientQueryAllUser_thenReturnUsers() {
-        List<User> expectedUsers = getUsers("t1", "t2", "t3");
+        List<UserDto> expectedUsers = getUsersDto("t1", "t2", "t3");
         when(userService.getUsers()).thenReturn(expectedUsers);
 
         List<UserDto> actualUsers = restResource.getUsers();
@@ -72,7 +71,7 @@ class UserResourceTest {
         verify(userService).deleteUser(testUserId);
     }
 
-    private void assertThatActuallListIsEqualToExpecteList(List<User> expectedUsers, List<UserDto> actualUsers) {
+    private void assertThatActuallListIsEqualToExpecteList(List<UserDto> expectedUsers, List<UserDto> actualUsers) {
         assertThat(actualUsers.size(), is(equalTo(expectedUsers.size())));
 
         List<String> actualIds = actualUsers.stream()
@@ -80,7 +79,7 @@ class UserResourceTest {
                 .collect(Collectors.toList());
 
         List<String> expectedIds = expectedUsers.stream()
-                .map(User::getId)
+                .map(UserDto::getUserId)
                 .collect(toList());
 
         for(int i =0; i < actualIds.size(); i++){

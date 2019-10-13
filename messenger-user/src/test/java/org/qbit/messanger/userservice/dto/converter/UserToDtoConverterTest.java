@@ -1,6 +1,8 @@
 package org.qbit.messanger.userservice.dto.converter;
 
 import org.junit.jupiter.api.Test;
+import org.qbit.messanger.userservice.converter.UserDtoUserConverter;
+import org.qbit.messanger.userservice.converter.UserUserDtoConverter;
 import org.qbit.messanger.userservice.dto.UserDto;
 import org.qbit.messanger.userservice.model.User;
 
@@ -14,7 +16,7 @@ import static org.qbit.messanger.userservice.fixture.DataSupplier.testUserId;
 
 class UserToDtoConverterTest {
 
-   UserToDtoConverter userToDtoConverter = new UserToDtoConverter();
+    UserUserDtoConverter userToDtoConverter = new UserUserDtoConverter();
 
     @Test
     void whenIsGivenUserModel_thenConvertTheModelTOUserDto() {
