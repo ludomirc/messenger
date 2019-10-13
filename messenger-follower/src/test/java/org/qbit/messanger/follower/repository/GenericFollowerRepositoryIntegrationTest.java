@@ -11,7 +11,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.PersistenceException;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -53,7 +52,7 @@ class GenericFollowerRepositoryIntegrationTest {
 
     @Test
     void whenIsGIveListOfFollowers_thenSaveTheList() {
-        List<Follower> expected = getFollowers();
+        List<Follower> expected = getTestFollowers();
 
         List<Follower> actual = (List<Follower>) followerRepository.saveAll(expected);
         entityManager.getEntityManager().flush();
@@ -63,7 +62,7 @@ class GenericFollowerRepositoryIntegrationTest {
 
     @Test
     void getFollowersByOwnerId() {
-        List<Follower> expected = getFollowers();
+        List<Follower> expected = getTestFollowers();
 
         expected = (List<Follower>) followerRepository.saveAll(expected);
         entityManager.getEntityManager().flush();
@@ -71,12 +70,5 @@ class GenericFollowerRepositoryIntegrationTest {
         List<Follower> actual = followerRepository.getFollowerByOwnerId(TEST_USER_ID1);
 
         assertThat(actual, is(equalTo(expected)));
-    }
-
-    private List<Follower> getFollowers() {
-        return Arrays.asList(
-                getTestFollower(TEST_USER_ID1, TEST_USER_ID2)
-                , getTestFollower(TEST_USER_ID1, TEST_USER_ID3)
-        );
     }
 }
