@@ -1,6 +1,5 @@
 package org.qbit.messanger.timeline.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.qbit.messanger.timeline.dto.FollowerDto;
 import org.qbit.messanger.timeline.service.FollowerService;
 import org.slf4j.Logger;
