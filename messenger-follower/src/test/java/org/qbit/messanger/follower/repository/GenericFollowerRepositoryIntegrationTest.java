@@ -33,6 +33,7 @@ class GenericFollowerRepositoryIntegrationTest {
     void whenIsGivenFlower_thenSaveTheFlower() {
         Follower expected = getFollower(TEST_USER_ID1, TEST_USER_ID2);
         Follower actual = followerRepository.save(expected);
+        entityManager.getEntityManager().flush();
 
         assertThat(actual, is(equalTo(expected)));
     }
@@ -54,10 +55,25 @@ class GenericFollowerRepositoryIntegrationTest {
     void whenIsGIveListOfFollowers_thenSaveTheList() {
         List<Follower> expected = Arrays.asList(
                 getFollower(TEST_USER_ID1, TEST_USER_ID2)
-                , getFollower(TEST_USER_ID1, TEST_USER_ID2)
                 , getFollower(TEST_USER_ID1, TEST_USER_ID3));
 
         List<Follower> actual = (List<Follower>) followerRepository.saveAll(expected);
+        entityManager.getEntityManager().flush();
+
+        assertThat(actual, is(equalTo(expected)));
+    }
+
+    @Test
+    void getFollowersByOwnerId() {
+        List<Follower> expected = Arrays.asList(
+                getFollower(TEST_USER_ID1, TEST_USER_ID2)
+                , getFollower(TEST_USER_ID1, TEST_USER_ID3)
+        );
+
+        expected = (List<Follower>) followerRepository.saveAll(expected);
+        entityManager.getEntityManager().flush();
+
+        List<Follower> actual = followerRepository.getFollowerByOwnerId(TEST_USER_ID1);
 
         assertThat(actual, is(equalTo(expected)));
     }
