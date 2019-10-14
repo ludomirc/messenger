@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.qbit.messanger.timeline.TimeLineApplication;
-import org.qbit.messanger.timeline.dto.FollowerDto;
+import org.qbit.messanger.timeline.dto.PostDto;
 import org.qbit.messanger.timeline.service.FollowerService;
+import org.qbit.messanger.timeline.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -17,15 +18,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @Disabled
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = TimeLineApplication.class)
-class FollowerServiceImplIntegrationTest {
+class PostServiceImplIntegrationTest {
 
     @Autowired
-    FollowerService followerService;
+    PostService postService;
 
     @Test
-    void getFollowers() {
+    void getPosts() {
 
-        String expectedOwnerId = "ala1";
-        List<FollowerDto> actual = followerService.getFollowers(expectedOwnerId);
+        String expectedUserId = "ala1";
+        List<PostDto> actual  = postService.getPosts(expectedUserId);
+
     }
 }
