@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="messenger-follower" />
         <module name="messenger-post" />
+        <module name="messenger-timeline" />
         <module name="messenger-user" />
         <module name="messenger-common" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="messenger-follower" target="11" />
       <module name="messenger-parent" target="11" />
       <module name="messenger-post" target="11" />
+      <module name="messenger-timeline" target="11" />
       <module name="messenger-user" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -26,6 +28,7 @@
       <module name="messenger-common" options="-parameters" />
       <module name="messenger-follower" options="-parameters" />
       <module name="messenger-post" options="-parameters" />
+      <module name="messenger-timeline" options="-parameters" />
       <module name="messenger-user" options="-parameters" />
     </option>
   </component>
