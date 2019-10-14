@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @RestController
 @RequestMapping("/v001/post")
@@ -22,7 +23,7 @@ public class PostResource {
     @Autowired
     UserService userService;
     @GetMapping("/{userId}")
-    ResponseEntity<PostDto> getPosts(@Valid @Size(min = 1, max = 50) @PathVariable String userId){
+    ResponseEntity<?> getPosts(@Valid @Size(min = 1, max = 50) @PathVariable String userId){
 
         UserDto userDto = userService.getUser(new UserDto(userId))
                 .orElseThrow(() -> new RuntimeException("User not found"));
