@@ -39,6 +39,8 @@ public class PostServiceImpl implements PostService {
                 .pathSegment(GET_POST_PATH)
                 .buildAndExpand(userId);
 
+        logger.info(uriComponents.toUriString());
+
         ResponseEntity<List<PostDto>> response =
                 restTemplate.exchange(uriComponents.toUriString(),
                         HttpMethod.GET, null, new ParameterizedTypeReference<List<PostDto>>() {
