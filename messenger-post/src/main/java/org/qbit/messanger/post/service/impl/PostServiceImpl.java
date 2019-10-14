@@ -33,6 +33,7 @@ public class PostServiceImpl implements PostService {
         return postRepository.findByUserId(userId)
                 .sorted(Comparator.comparing(Post::getId).reversed())
                 .map(postPostDtoConverter::convert)
+                .sorted(Comparator.comparing(PostDto::getId).reversed())
                 .collect(Collectors.toList());
     }
 
