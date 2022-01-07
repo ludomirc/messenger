@@ -23,7 +23,7 @@
         <fasterxml.jackson.version>2.10.0</fasterxml.jackson.version>
         <lobmock.veriosn>1.18.10</lobmock.veriosn>
         <sprng.boot.version>2.1.9.RELEASE</sprng.boot.version>
-        <h2.version>1.4.199</h2.version>
+        <h2.version>2.0.206</h2.version>
         <messanger.common.version>1.0-SNAPSHOT</messanger.common.version>
     </properties>
 
