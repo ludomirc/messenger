@@ -20,7 +20,7 @@
         <java.version>11</java.version>
         <junit.version>5.3.2</junit.version>
         <swagger.version>2.9.2</swagger.version>
-        <fasterxml.jackson.version>2.10.0</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.13.4.1</fasterxml.jackson.version>
         <lobmock.veriosn>1.18.10</lobmock.veriosn>
         <sprng.boot.version>2.1.9.RELEASE</sprng.boot.version>
         <h2.version>1.4.199</h2.version>
